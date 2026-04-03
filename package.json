@@ -38,8 +38,11 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.5.0",
+    "@types/node-telegram-bot-api": "^0.64.14",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",

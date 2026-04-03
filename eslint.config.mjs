@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
+import importPlugin from "eslint-plugin-import";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
@@ -10,6 +11,17 @@ export default tseslint.config(
   {
     files: ["**/*.ts"],
     extends: [...tseslint.configs.recommendedTypeChecked],
+    plugins: {
+      import: importPlugin,
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true,
+          project: "./tsconfig.json",
+        },
+      },
+    },
     languageOptions: {
       parserOptions: {
         projectService: true,

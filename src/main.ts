@@ -1,7 +1,7 @@
+import { HOST, PORT } from "@/config/env";
+import { logger } from "@/util/logger";
+import { buildServer } from "@/util/server";
 import "dotenv/config";
-import { HOST, PORT } from "./config/env";
-import { logger } from "./util/logger";
-import { buildServer } from "./util/server";
 
 async function main(): Promise<void> {
   const app = await buildServer();

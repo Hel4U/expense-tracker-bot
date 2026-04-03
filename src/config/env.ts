@@ -6,6 +6,9 @@ const envParser = z.object({
   PORT: z.coerce.number().default(3000),
   HOST: z.string().default("localhost"),
   WEBHOOK_URL: z.string().default(""),
+  SPREADSHEET_ID: z.string(),
+  GOOGLE_SERVICE_ACCOUNT_MAIL: z.string(),
+  GOOGLE_PRIVATE_KEY: z.string(),
 });
 
 const env = envParser.safeParse(process.env);
@@ -15,4 +18,12 @@ if (!env.success) {
   process.exit(1);
 }
 
-export const { TELEGRAM_BOT_TOKEN, PORT, HOST, WEBHOOK_URL } = env.data;
+export const {
+  TELEGRAM_BOT_TOKEN,
+  PORT,
+  HOST,
+  WEBHOOK_URL,
+  GOOGLE_SERVICE_ACCOUNT_MAIL,
+  GOOGLE_PRIVATE_KEY,
+  SPREADSHEET_ID,
+} = env.data;

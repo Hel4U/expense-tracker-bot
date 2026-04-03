@@ -1,7 +1,8 @@
-import { TELEGRAM_BOT_TOKEN, WEBHOOK_URL } from "@/config/env";
+import { SPREADSHEET_ID, TELEGRAM_BOT_TOKEN, WEBHOOK_URL } from "@/config/env";
 import { telegramWebhookRoute } from "@/modules/webhook/telegram/telegram.routes";
 import Fastify from "fastify";
 import type TelegramBot from "node-telegram-bot-api";
+import { readSheetValues } from "./google";
 import { createTelegramBot } from "./telegram";
 
 declare module "fastify" {
@@ -25,6 +26,10 @@ export async function buildServer() {
   });
 
   const bot = await createTelegramBot(TELEGRAM_BOT_TOKEN, WEBHOOK_URL);
+  await readSheetValues({
+    spreadsheetId: SPREADSHEET_ID,
+    range: "A1:A10",
+  });
 
   app.decorate("bot", bot);
   app.decorateRequest("bot");

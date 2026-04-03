@@ -3,3 +3,6 @@ node_modules/
 dist
 coverage
 .env
+*.pem
+client-secret*.json
+expense-tracker*.json

@@ -1,10 +1,20 @@
 import { HOST, PORT } from "./config/env";
+import Fastify from "fastify";
 import { logger } from "./util/logger";
-import { buildServer } from "./util/server";
+import { configureServer } from "./util/server";
 import "dotenv/config";
 
 async function main(): Promise<void> {
-  const app = await buildServer();
+  const app = Fastify({
+    logger: {
+      level: "debug",
+      transport: {
+        target: "pino-pretty",
+      },
+    },
+  });
+
+  await configureServer(app);
 
   await app.listen({
     port: PORT,

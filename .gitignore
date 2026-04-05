@@ -6,3 +6,4 @@ coverage
 *.pem
 client-secret*.json
 expense-tracker*.json
+.DS_Store

@@ -1,23 +1,50 @@
+import type { Deps, TelegramStepContext } from "@/types/message";
 import type { FastifyReply, FastifyRequest } from "fastify";
 import type { TelegramRequestBody } from "./telegram.schema";
+import { processTelegramExpenses, syncToSheet } from "./telegram.services";
 
 type TelegramWebhookRequest = FastifyRequest<{
   Body: TelegramRequestBody;
 }>;
 
-export function telegramWebhookHandler(request: TelegramWebhookRequest, reply: FastifyReply): void {
-  request.log.info(
-    {
-      updateId: request.body?.update_id,
-      messageText: request.body?.message?.text,
-      chatId: request.body?.message?.chat?.id,
+export async function telegramWebhookHandler(
+  request: TelegramWebhookRequest,
+  reply: FastifyReply,
+): Promise<void> {
+  const updateId = request.body?.update_id;
+  const messageText = request.body?.message?.text;
+  const chatId = request.body?.message?.chat?.id;
+  const lastNumber = request.lastSeqNumber;
+
+  const ctx: TelegramStepContext = {
+    chatId: chatId!,
+    updateId: updateId,
+    messageText,
+    lastNumber,
+  };
+
+  const deps: Deps = {
+    sendMessage: async (chatId: number, text: string) =>
+      await request.bot.sendMessage(chatId, text),
+    syncMessage: syncToSheet,
+    loggerInfo: (msg: string, meta?: unknown) => {
+      if (meta) {
+        request.log.info(meta, msg);
+      } else {
+        request.log.info(msg);
+      }
     },
-    "Telegram webhook update received",
-  );
-  request.bot.processUpdate(request.body);
-  request.log.info(
-    { updateId: request.body?.update_id },
-    "Telegram webhook update dispatched to bot",
-  );
+    logger: (errMsg?: string, meta?: unknown) => {
+      if (meta) {
+        request.log.error(meta, errMsg || "Error");
+      } else {
+        request.log.error(errMsg || "Error");
+      }
+    },
+  };
+
+  await processTelegramExpenses(ctx, deps);
+
+  request.lastSeqNumber += 1;
   void reply.status(200).send();
 }

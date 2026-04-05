@@ -1,10 +1,10 @@
-import { getGoogleSheetsScopes } from "@/config/constant";
-import { GOOGLE_PRIVATE_KEY, GOOGLE_SERVICE_ACCOUNT_MAIL } from "@/config/env";
+import { getGoogleSheetsScopes } from "../config/constant";
+import { GOOGLE_PRIVATE_KEY, GOOGLE_SERVICE_ACCOUNT_MAIL } from "../config/env";
 import type {
   AppendSheetValuesParams,
   ReadSheetValuesParams,
   UpdateSheetValuesParams,
-} from "@/types/google";
+} from "../types/google";
 import { google, type sheets_v4 } from "googleapis";
 import { createGoogleSheetsError } from "./error";
 import { tryCatch } from "./try-catch";

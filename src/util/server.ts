@@ -1,6 +1,6 @@
-import { SHEET_NAME, SHEET_SERIAL_NAME } from "@/config/constant";
-import { SPREADSHEET_ID, TELEGRAM_BOT_TOKEN, WEBHOOK_URL } from "@/config/env";
-import { telegramWebhookRoute } from "@/modules/webhook/telegram/telegram.routes";
+import { SHEET_NAME, SHEET_SERIAL_NAME } from "../config/constant";
+import { SPREADSHEET_ID, TELEGRAM_BOT_TOKEN, WEBHOOK_URL } from "../config/env";
+import { telegramWebhookRoute } from "../modules/webhook/telegram/telegram.routes";
 import Fastify from "fastify";
 import type TelegramBot from "node-telegram-bot-api";
 import { readSheetValues } from "./google";

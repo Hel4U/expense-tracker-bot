@@ -1,4 +1,4 @@
-import type { MessageValidationConstructor } from "@/types/validation";
+import type { MessageValidationConstructor } from "../types/validation";
 import {
   CommandUsedValidation,
   EmptyMessageValidation,
@@ -10,7 +10,7 @@ import {
   NoTabsValidation,
   NotFirstLineZeroValidation,
   ShouldContainCharactersAfterFirstLineValidation,
-} from "@/util/messages/validators";
+} from "../util/messages/validators";
 
 const GOOGLE_SHEETS_SCOPES = new Set<string>(["https://www.googleapis.com/auth/spreadsheets"]);
 

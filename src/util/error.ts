@@ -1,4 +1,4 @@
-import type { GoogleApiError } from "@/types/google";
+import type { GoogleApiError } from "../types/google";
 
 export function createGoogleSheetsError(
   error: unknown,

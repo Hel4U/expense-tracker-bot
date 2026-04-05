@@ -1,5 +1,5 @@
-import { TELEGRAM_MESSAGE_VALIDATORS } from "@/config/constant";
-import type { TelegramMsgHandlerStep } from "@/types/message";
+import { TELEGRAM_MESSAGE_VALIDATORS } from "../../config/constant";
+import type { TelegramMsgHandlerStep } from "../../types/message";
 import { tryCatch, tryCatchSync } from "../try-catch";
 import { runTelegramMessageValidators } from "./engine";
 import { parseMessage } from "./parsing";

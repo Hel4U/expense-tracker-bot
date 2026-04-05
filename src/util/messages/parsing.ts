@@ -1,4 +1,4 @@
-import type { ParsedMessage } from "@/types/message";
+import type { ParsedMessage } from "../../types/message";
 
 export function parseMessage(message: string): ParsedMessage {
   const splittedMessage = message.split(" ");

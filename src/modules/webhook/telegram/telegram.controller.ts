@@ -1,4 +1,4 @@
-import type { Deps, TelegramStepContext } from "@/types/message";
+import type { Deps, TelegramStepContext } from "../../../types/message";
 import type { FastifyReply, FastifyRequest } from "fastify";
 import type { TelegramRequestBody } from "./telegram.schema";
 import { processTelegramExpenses, syncToSheet } from "./telegram.services";

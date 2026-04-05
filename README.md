@@ -92,7 +92,7 @@ pnpm run build
 **Run production build**:
 
 ```bash
-node dist/main.js
+node dist/index.js
 ```
 
 ### Docker Setup
@@ -185,7 +185,7 @@ docker-compose down       # Stop services
 
 ```text
 src/
-├── main.ts                          # Application entry point
+├── index.ts                         # Application entry point
 ├── config/
 │   ├── constant.ts                  # Sheet column names
 │   └── env.ts                       # Environment variables & validation

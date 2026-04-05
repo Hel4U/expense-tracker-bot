@@ -1,14 +1,14 @@
-import { SHEET_AMOUNT_NAME, SHEET_NAME, SHEET_SERIAL_NAME } from "@/config/constant";
-import { SPREADSHEET_ID } from "@/config/env";
-import type { Deps, ParsedMessage, TelegramStepContext } from "@/types/message";
-import { appendSheetValues } from "@/util/google";
-import { runMessageProcessingPipeline } from "@/util/messages/engine";
+import { SHEET_AMOUNT_NAME, SHEET_NAME, SHEET_SERIAL_NAME } from "../../../config/constant";
+import { SPREADSHEET_ID } from "../../../config/env";
+import type { Deps, ParsedMessage, TelegramStepContext } from "../../../types/message";
+import { appendSheetValues } from "../../../util/google";
+import { runMessageProcessingPipeline } from "../../../util/messages/engine";
 import {
   parseStep,
   sendSuccessMessageStep,
   syncToGoogleSheetStep,
   validateStep,
-} from "@/util/messages/step";
+} from "../../../util/messages/step";
 
 export async function processTelegramExpenses(ctx: TelegramStepContext, deps: Deps): Promise<void> {
   await runMessageProcessingPipeline(ctx, deps, [

@@ -1,5 +1,5 @@
-import { TELEGRAM_MESSAGE_VALIDATORS } from "@/config/constant";
-import type { Deps, TelegramMsgHandlerStep, TelegramStepContext } from "@/types/message";
+import { TELEGRAM_MESSAGE_VALIDATORS } from "../../config/constant";
+import type { Deps, TelegramMsgHandlerStep, TelegramStepContext } from "../../types/message";
 
 export function runTelegramMessageValidators(message: string): void {
   for (const Validation of TELEGRAM_MESSAGE_VALIDATORS) {

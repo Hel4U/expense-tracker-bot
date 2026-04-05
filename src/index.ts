@@ -1,6 +1,6 @@
-import { HOST, PORT } from "@/config/env";
-import { logger } from "@/util/logger";
-import { buildServer } from "@/util/server";
+import { HOST, PORT } from "./config/env";
+import { logger } from "./util/logger";
+import { buildServer } from "./util/server";
 import "dotenv/config";
 
 async function main(): Promise<void> {
